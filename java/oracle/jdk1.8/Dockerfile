@@ -13,7 +13,8 @@ RUN mkdir -p /usr/lib/jvm && \
   tar zxf /jdk.tgz && \
   chown root:root -R jdk* && \
   rm -rf java-8-oracle && \
-  mv jdk1.8.0_92 java-8-oracle
+  mv jdk1.8.0_92 java-8-oracle && \
+  rm /jdk.tgz
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
