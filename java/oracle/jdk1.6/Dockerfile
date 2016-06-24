@@ -15,7 +15,9 @@ RUN mkdir -p /usr/lib/jvm && \
   ./jdk.bin && \
   chown root:root -R jdk* && \
   rm -rf java-8-oracle && \
-  mv jdk1.6.0_45 java-6-oracle
+  mv jdk1.6.0_45 java-6-oracle 
+
+RUN rm /usr/lib/jvm/jdk.bin
 
 ENV JAVA_HOME /usr/lib/jvm/java-6-oracle
 
