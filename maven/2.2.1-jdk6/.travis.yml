@@ -1,0 +1,9 @@
+sudo: required
+
+language: java
+
+services:
+  - docker
+
+script:
+- docker build -t vdubois/maven:2.2.1-jdk6 

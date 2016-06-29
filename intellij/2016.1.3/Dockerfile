@@ -2,14 +2,28 @@ FROM ubuntu:xenial
 
 ENV INTELLIJ_VERSION 2016.1.3
 
+RUN export uid=1001 gid=1001 && \
+    mkdir -p /home/developer && \
+    echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
+    echo "developer:x:${uid}:" >> /etc/group && \
+    mkdir -p /etc/sudoers.d/ && \
+    echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
+    chmod 0440 /etc/sudoers.d/developer && \
+    chown ${uid}:${gid} -R /home/developer && \
+    mkdir -p /opt
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl openjdk-8-jdk && \
     apt-get clean all && \
     rm -rf /var/lib/apt/lists/* && \
-    curl http://download-cf.jetbrains.com/idea/ideaIU-${INTELLIJ_VERSION}.tar.gz > /root/ideaIU-${INTELLIJ_VERSION}.tar.gz && \
-    cd /root && \
+    curl http://download-cf.jetbrains.com/idea/ideaIU-${INTELLIJ_VERSION}.tar.gz > /opt/ideaIU-${INTELLIJ_VERSION}.tar.gz && \
+    cd /opt && \
     tar xvzf ideaIU-${INTELLIJ_VERSION}.tar.gz && \
     rm -f ideaIU-${INTELLIJ_VERSION}.tar.gz && \
-    mv /root/idea* /root/idea
+    mv /opt/idea* /opt/idea && \
+    chown ${uid}:${gid} -R /opt
 
-ENTRYPOINT [ "/root/idea/bin/idea.sh" ]
+USER developer
+ENV HOME /home/developer
+
+ENTRYPOINT [ "/opt/idea/bin/idea.sh" ]
