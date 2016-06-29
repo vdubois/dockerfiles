@@ -5,12 +5,12 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /usr/share/maven \
+RUN mkdir -p /usr/share/maven-2.2.1 \
   && curl -fsSL http://archive.apache.org/dist/maven/binaries/apache-maven-2.2.1-bin.tar.gz \
-    | tar -xzC /usr/share/maven --strip-components=1 \
-  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
+    | tar -xzC /usr/share/maven-2.2.1 --strip-components=1 \
+  && ln -s /usr/share/maven-2.2.1/bin/mvn /usr/bin/mvn
 
-ENV MAVEN_HOME /usr/share/maven
+ENV MAVEN_HOME /usr/share/maven-2.2.1
 
 VOLUME /root/.m2
 
