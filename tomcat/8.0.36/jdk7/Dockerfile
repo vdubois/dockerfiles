@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get clean all && \
     rm -rf /var/lib/apt/lists/*
 
-ENV CATALINA_HOME /usr/local/tomcat
+ENV CATALINA_HOME /usr/local/tomcat-8.0.36
 ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
 WORKDIR $CATALINA_HOME
