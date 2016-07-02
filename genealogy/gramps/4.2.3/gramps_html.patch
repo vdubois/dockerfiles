@@ -1,0 +1,11 @@
+--- narrativeweb.orig.py	2016-04-25 14:22:06.572730722 +0100
++++ narrativeweb.py	2016-04-25 14:20:35.112762753 +0100
+@@ -8099,6 +8099,8 @@
+         self.__archive.connect('value-changed', self.__archive_changed)
+ 
+         dbname = self.__db.get_dbname()
++        if dbname is None:
++             dbname = 'database'
+         default_dir = dbname + "_" + "NAVWEB"
+         self.__target = DestinationOption(_("Destination"),
+                             os.path.join(config.get('paths.website-directory'),
