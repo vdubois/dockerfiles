@@ -5,10 +5,10 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /usr/share/maven-2.2.1 \
-  && curl -fsSL http://archive.apache.org/dist/maven/binaries/apache-maven-2.2.1-bin.tar.gz \
-    | tar -xzC /usr/share/maven-2.2.1 --strip-components=1 \
-  && ln -s /usr/share/maven-2.2.1/bin/mvn /usr/bin/mvn
+RUN mkdir -p /usr/share/maven-3.4.0 \
+  && curl --insecure -fsSL https://builds.apache.org/view/M-R/view/Maven/job/maven-3.x/lastSuccessfulBuild/artifact/apache-maven/target/apache-maven-3.4.0-SNAPSHOT-bin.tar.gz \
+    | tar -xzC /usr/share/maven-3.4.0 --strip-components=1 \
+  && ln -s /usr/share/maven-3.4.0/bin/mvn /usr/bin/mvn
 
 RUN export uid=1001 gid=1001 && \
     mkdir -p /home/developer && \
@@ -18,10 +18,10 @@ RUN export uid=1001 gid=1001 && \
     echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
     chmod 0440 /etc/sudoers.d/developer && \
     chown ${uid}:${gid} -R /home/developer && \
-    chown ${uid}:${gid} -R /usr/share/maven-2.2.1
+    chown ${uid}:${gid} -R /usr/share/maven-3.4.0
 
 USER developer
 
-ENV MAVEN_HOME /usr/share/maven-2.2.1
+ENV MAVEN_HOME /usr/share/maven-3.4.0
 
 CMD ["mvn"]
