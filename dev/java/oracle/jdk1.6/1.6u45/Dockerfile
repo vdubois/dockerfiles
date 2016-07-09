@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu:xenial
 
 MAINTAINER Vincent Dubois <dubois.vct@free.fr>
 
