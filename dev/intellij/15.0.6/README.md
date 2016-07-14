@@ -1,6 +1,6 @@
-# IntelliJ IDEA Ultimate 2016.2 in a docker container
+# IntelliJ IDEA Ultimate 15.0.6 in a docker container
 
-Image on docker registry : **vdubois/intellij:2016.2**
+Image on docker registry : **vdubois/intellij:15.0.6**
 
 This docker image :
 
@@ -12,13 +12,13 @@ This docker image :
 ## How to run this image
 
 ```
-docker run --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix vdubois/intellij:2016.2
+docker run --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix vdubois/intellij:15.0.6
 ```
 
 You can add other volumes to run command (path /home/$USER is set when you build vdubois/ide-template image) :
 
 ```
-    -v /home/vdubois/.IntelliJIdea2016.2:/home/vdubois/.IntelliJIdea2016.2   // to get intellij config persistence even when container is deleted
+    -v /home/vdubois/.IntelliJIdea15:/home/vdubois/.IntelliJIdea15   // to get intellij config persistence even when container is deleted
     -v /home/vdubois/.java/.userPrefs:/home/vdubois/.java/.userPrefs         // to get intellij config persistence even when container is deleted
     -v /home/vdubois/.ssh:/home/vdubois/.ssh     // in order to use your ssh configuration, for example with git
     -v /home/vdubois/.m2:/home/vdubois/.m2       // persist maven repository and config
