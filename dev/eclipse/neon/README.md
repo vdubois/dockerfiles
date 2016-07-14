@@ -18,14 +18,9 @@ docker run --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix vdubois/eclipse:neon
 You can add other volumes to run command (path /home/$USER is set when you build vdubois/ide-template image) :
 
 ```
-    -v /home/vdubois/.IntelliJIdea15:/home/vdubois/.IntelliJIdea15   // to get intellij config persistence even when container is deleted
-    -v /home/vdubois/.java/.userPrefs:/home/vdubois/.java/.userPrefs         // to get intellij config persistence even when container is deleted
+    -v /home/vdubois/.eclipse:/home/vdubois/.eclipse   // to get eclipse config persistence even when container is deleted
     -v /home/vdubois/.ssh:/home/vdubois/.ssh     // in order to use your ssh configuration, for example with git
     -v /home/vdubois/.m2:/home/vdubois/.m2       // persist maven repository and config
-    -v /home/vdubois/workspaces:/home/vdubois/workspaces     // access to your sources
+    -v /home/vdubois/workspaces:/home/vdubois/workspaces     // access to your eclipse workspaces / sources
     ...
 ```
-
-## Caveats
-
-When a new version of IntelliJ is published, you cannot get it directly, the Dockerfile must be updated and another tag built.
