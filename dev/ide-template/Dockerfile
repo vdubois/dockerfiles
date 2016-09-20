@@ -6,9 +6,15 @@ RUN apt-get update && apt-get install -y git subversion mercurial vim wget curl 
   apt-get clean all && \
   rm -rf /var/lib/apt/lists/*
 
+RUN locale-gen fr_FR.UTF-8
+ENV LANG fr_FR.UTF-8
+ENV LANGUAGE fr_FR:fr
+ENV LC_ALL fr_FR.UTF-8
+
 RUN mkdir -p /home/${user} && \
     echo "${user}:x:${uid}:${gid}:${user},,,:/home/${user}:/bin/bash" >> /etc/passwd && \
     echo "${user}:x:${uid}:" >> /etc/group && \
+    echo "docker:x:999:${uid}" >> /etc/group && \
     mkdir -p /etc/sudoers.d/ && \
     echo "${user} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${user} && \
     chmod 0440 /etc/sudoers.d/${user} && \
