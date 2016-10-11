@@ -2,14 +2,9 @@ FROM ubuntu:xenial
 
 MAINTAINER Vincent Dubois <dubois.vct@free.fr>
 
-RUN apt-get update && apt-get install -y git subversion mercurial vim wget curl openjdk-8-jdk zsh libgtk2.0-0 libcanberra-gtk-module libxext-dev libxrender-dev libxtst-dev graphviz --no-install-recommends && \
+RUN apt-get update && apt-get install -y git subversion mercurial vim wget curl openjdk-8-jdk zsh libgtk2.0-0 libcanberra-gtk-module libxext-dev libxrender-dev libxtst-dev graphviz sudo --no-install-recommends && \
   apt-get clean all && \
   rm -rf /var/lib/apt/lists/*
-
-RUN locale-gen fr_FR.UTF-8
-ENV LANG fr_FR.UTF-8
-ENV LANGUAGE fr_FR:fr
-ENV LC_ALL fr_FR.UTF-8
 
 RUN mkdir -p /home/${user} && \
     echo "${user}:x:${uid}:${gid}:${user},,,:/home/${user}:/bin/bash" >> /etc/passwd && \
@@ -25,6 +20,12 @@ RUN mkdir -p /home/${user} && \
 USER ${user}
 ENV HOME /home/${user}
 
-RUN git config --global http.sslVerify false
+ENV LANG fr_FR.UTF-8
+ENV LANGUAGE fr_FR:fr
+ENV LC_ALL fr_FR.UTF-8
+ENV LC_CTYPE fr_FR.UTF-8
+
+RUN git config --global http.sslVerify false && \
+    sudo locale-gen fr_FR.UTF-8
 RUN git clone git://github.com/robbyrussell/oh-my-zsh.git /home/${user}/.oh-my-zsh \
-      && cp /home/${user}/.oh-my-zsh/templates/zshrc.zsh-template /home/${user}/.zshrc
+    && cp /home/${user}/.oh-my-zsh/templates/zshrc.zsh-template /home/${user}/.zshrc
