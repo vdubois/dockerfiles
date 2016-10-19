@@ -1,6 +1,6 @@
 # IntelliJ IDEA Ultimate 2016.2 in a docker container
 
-Image on docker registry : **vdubois/intellij:2016.2**
+Image on docker registry : **vdubois/intellij:2016.2.5**
 
 This docker image :
 
@@ -12,7 +12,7 @@ This docker image :
 ## How to run this image
 
 ```
-docker run --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix vdubois/intellij:2016.2
+docker run --rm -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix vdubois/intellij:2016.2.5
 ```
 
 You can add other volumes to run command (path /home/$USER is set when you build vdubois/ide-template image) :
