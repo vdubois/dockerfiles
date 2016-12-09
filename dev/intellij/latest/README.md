@@ -23,6 +23,10 @@ You can add other volumes to run command (path /home/$USER is set when you build
     -v /home/vdubois/.ssh:/home/vdubois/.ssh     // in order to use your ssh configuration, for example with git
     -v /home/vdubois/.m2:/home/vdubois/.m2       // persist maven repository and config
     -v /home/vdubois/workspaces:/home/vdubois/workspaces     // access to your sources
+    -v /usr/share/icons:/usr/share/icons:ro
+    -v /usr/share/fonts:/usr/share/fonts:ro
+    -v /home/vdubois/.local/share/fonts:/home/vdubois/.local/share/fonts:ro
+    -v /etc/fonts:/etc/fonts:ro
     ...
 ```
 
