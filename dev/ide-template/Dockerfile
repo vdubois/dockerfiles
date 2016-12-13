@@ -2,7 +2,7 @@ FROM ubuntu:xenial
 
 MAINTAINER Vincent Dubois <dubois.vct@free.fr>
 
-RUN apt-get update && apt-get install -y git subversion mercurial vim wget curl openjdk-8-jdk zsh libgtk2.0-0 libcanberra-gtk-module libxext-dev libxrender-dev libxtst-dev graphviz sudo libstdc++6 --no-install-recommends && \
+RUN apt-get update && apt-get install -y git subversion mercurial vim wget curl openjdk-8-jdk zsh libgtk2.0-0 libcanberra-gtk-module libxext-dev libxrender-dev libxtst-dev graphviz sudo libstdc++6 sudo apt-get libsecret-1-0 gnome-keyring --no-install-recommends && \
   apt-get clean all && \
   rm -rf /var/lib/apt/lists/*
 
