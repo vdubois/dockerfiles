@@ -1,6 +1,6 @@
 FROM vdubois/ide-template:latest
 
-ENV INTELLIJ_VERSION 2016.3.4
+ENV INTELLIJ_VERSION 181.4203.519
 
 RUN curl http://download-cf.jetbrains.com/idea/ideaIU-${INTELLIJ_VERSION}.tar.gz > /opt/ideaIU-${INTELLIJ_VERSION}.tar.gz && \
     cd /opt && \
