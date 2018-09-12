@@ -7,13 +7,13 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN wget -O /jdk.tgz --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u112-b15/jdk-8u112-linux-x64.tar.gz
+RUN wget -O /jdk.tgz --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz
 RUN mkdir -p /usr/lib/jvm && \
   cd /usr/lib/jvm && \
   tar zxf /jdk.tgz && \
   chown root:root -R jdk* && \
   rm -rf java-8-oracle && \
-  mv jdk1.8.0_112 java-8-oracle && \
+  mv jdk1.8.0_181 java-8-oracle && \
   rm /jdk.tgz
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
