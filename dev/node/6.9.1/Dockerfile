@@ -1,4 +1,4 @@
-FROM node:6.9.4
+FROM node:6.9.1
 
 MAINTAINER Vincent Dubois <dubois.vct@free.fr>
 
