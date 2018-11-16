@@ -1,4 +1,4 @@
-FROM jenkinsci/blueocean:1.9.0
+FROM jenkins/jenkins:lts
 MAINTAINER Vincent Dubois <dubois.vct@free.fr>
 USER root
 
