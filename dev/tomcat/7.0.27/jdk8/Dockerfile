@@ -1,4 +1,4 @@
-FROM vdubois/java-oracle:1.8u92
+FROM vdubois/java-oracle:1.8u181
 
 MAINTAINER Vincent Dubois <dubois.vct@free.fr>
 
@@ -21,7 +21,7 @@ RUN set -x \
         && rm bin/*.bat \
         && rm tomcat.tar.gz*
 
-RUN export uid=1001 gid=1001 && \
+RUN export uid=1000 gid=1000 && \
     mkdir -p /home/developer && \
     echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
     echo "developer:x:${uid}:" >> /etc/group && \

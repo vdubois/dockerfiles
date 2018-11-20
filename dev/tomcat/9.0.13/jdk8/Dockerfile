@@ -1,4 +1,4 @@
-FROM vdubois/java-oracle:1.8u92
+FROM vdubois/java-oracle:1.8u181
 
 MAINTAINER Vincent Dubois <dubois.vct@free.fr>
 
@@ -7,13 +7,13 @@ RUN apt-get update && \
     apt-get clean all && \
     rm -rf /var/lib/apt/lists/*
 
-ENV CATALINA_HOME /usr/local/tomcat-9.0.0.M8
+ENV CATALINA_HOME /usr/local/tomcat-9.0.13
 ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
 WORKDIR $CATALINA_HOME
 
 ENV TOMCAT_MAJOR 9
-ENV TOMCAT_VERSION 9.0.0.M8
+ENV TOMCAT_VERSION 9.0.13
 ENV TOMCAT_TGZ_URL https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
 
 RUN set -x \
@@ -23,7 +23,7 @@ RUN set -x \
 	&& rm bin/*.bat \
 	&& rm tomcat.tar.gz*
 
-RUN export uid=1001 gid=1001 && \
+RUN export uid=1000 gid=1000 && \
     mkdir -p /home/developer && \
     echo "developer:x:${uid}:${gid}:Developer,,,:/home/developer:/bin/bash" >> /etc/passwd && \
     echo "developer:x:${uid}:" >> /etc/group && \
@@ -31,7 +31,7 @@ RUN export uid=1001 gid=1001 && \
     echo "developer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/developer && \
     chmod 0440 /etc/sudoers.d/developer && \
     chown ${uid}:${gid} -R /home/developer && \
-    chown ${uid}:${gid} -R /usr/local/tomcat-9.0.0.M8
+    chown ${uid}:${gid} -R /usr/local/tomcat-9.0.13
 
 USER developer
 
